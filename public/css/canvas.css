@@ -1,0 +1,7 @@
+body {
+	position: fixed;
+}
+
+#landscape {
+  display: none;
+}
