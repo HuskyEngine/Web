@@ -81,7 +81,7 @@ router.get('/css/font.css', (req, res, next) => {
 router.get('/config', (req, res, next) => {
   res.send({
     debug: config.debug,
-    defaultFont: (config.fonts === undefined || config.fonts.length === 0 || config.fonts[0].name === null) ? "pt Arial" : "pt " + config.fonts[0].name,
+    defaultFont: (config.fonts === undefined || config.fonts.length === 0 || config.fonts[0].name === null) ? "Arial" : config.fonts[0].name,
     multiplier: config.multiplier,
     tilesize: config.tilesize,
     quadrantsize: config.quadrantsize
