@@ -7,7 +7,8 @@ const config       = require('../config.json');
 const debug        = require('debug')(config.name + ':Web');
 const http         = require('http');
 
-const index = require('./routes/index');
+const index  = require('./routes/index');
+const editor = require('./routes/editor');
 const app   = express();
 
 let proxy = require('http-proxy').createProxyServer();
@@ -36,6 +37,7 @@ server.on('upgrade', function (req, res) {
 });
 
 app.use('/', index);
+app.use('/editor', editor);
 app.use('/scenes', express.static(dir('../scenes')));
 app.use('/maps', express.static(dir('../maps')));
 app.use('/img', express.static(dir('../assets/images')));
