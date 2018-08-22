@@ -15,7 +15,7 @@ let proxy = require('http-proxy').createProxyServer();
 let server = http.createServer(app);
 
 // view engine setup
-app.set('views', [dir('views'), dir('../Client/views')]);
+app.set('views', dir('views'));
 app.set('view engine', 'ejs');
 
 app.use(favicon(dir('../assets/logo.png')));
