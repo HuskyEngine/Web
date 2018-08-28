@@ -36,6 +36,11 @@ server.on('upgrade', function (req, res) {
   proxy.ws(req, res, {target: 'http://localhost:' + config.game});
 });
 
+proxy.on('error', function (err, req, res) {
+  res.status(500);
+  res.send("There was a problem proxying the socket.io request.");
+});
+
 app.use('/', index);
 app.use('/editor', editor);
 app.use('/scenes', express.static(dir('../scenes')));
