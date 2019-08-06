@@ -9,6 +9,7 @@ let images     = [];
 let sprites    = [];
 let animations = [];
 let tilesheets = [];
+let sounds     = [];
 
 recursive("../assets/images", (err, files) => {
   images = files.filter((file) => {
@@ -37,6 +38,13 @@ recursive("../assets/tilesheets", (err, files) => {
   }).map((file) => file.slice(21));
 });
 
+recursive("../assets/sounds", (err, files) => {
+  sounds = files.filter((file) => {
+    if (file.slice(-5) === ".json") return;
+    return ['.DS_Store', '.gitKeep'].indexOf(file.substring(file.lastIndexOf('/')+1)) === -1;
+  }).map((file) => file.slice(17));
+});
+
 router.get('/', (req, res, next) => {
   res.render('index', {title: config.name});
 });
@@ -58,7 +66,7 @@ router.get('/scenes/error.js', (req, res, next) => {
 });
 
 router.get('/assets.manifest', (req, res, next) => {
-  res.send({images, sprites, animations, tilesheets});
+  res.send({images, sprites, animations, tilesheets, sounds});
 });
 
 router.get('/css/font.css', (req, res, next) => {

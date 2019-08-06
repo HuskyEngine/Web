@@ -49,6 +49,7 @@ app.use('/img', express.static(dir('../assets/images')));
 app.use('/sprites', express.static(dir('../assets/sprites')));
 app.use('/animations', express.static(dir('../assets/animations')));
 app.use('/tilesheets', express.static(dir('../assets/tilesheets')));
+app.use('/sounds', express.static(dir('../assets/sounds')));
 app.use('/fonts', express.static(dir('../assets/fonts')));
 app.use('/apple-touch-icon.png', express.static(dir('../assets/reverselogo.png')));
 
